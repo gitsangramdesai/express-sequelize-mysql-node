@@ -1,15 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const Tutorial = sequelize.define("tutorial", {
-        title: {
+    const CourseDetails = sequelize.define("courseDetail", {
+        instructor: {
             type: Sequelize.STRING
         },
-        description: {
+        prerequisite: {
             type: Sequelize.STRING
         }, 
-        published: {     
-            type: Sequelize.BOOLEAN
-        },
         courseId: {
             type: Sequelize.INTEGER,
             references: {
@@ -17,8 +14,7 @@ module.exports = (sequelize, Sequelize) => {
                 key: 'id'
             }
         }  
+        
         });
-        return Tutorial;
+        return CourseDetails;
     };
-
-    

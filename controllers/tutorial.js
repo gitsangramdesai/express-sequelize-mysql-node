@@ -1,5 +1,8 @@
 const db = require("../models"); // models path depend on your structure
 const Tutorial = db.tutorials;
+const Course = db.courses;
+const Tag = db.tags;
+const TutorialTag = db.tutorialTags;
 
 exports.create = (req, res) => {
   // Validate request
@@ -34,7 +37,17 @@ exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
-    Tutorial.findAll({ where: condition })
+    Tutorial.findAll({ 
+      where: condition ,
+      include: [{
+        model: Course, as: "course",
+        attributes:['name', 'description']
+      },
+      {
+        model: Tag,as: "tags",
+        attributes: ['name']
+      }]
+    })
       .then(data => {
         res.send(data);
       })
