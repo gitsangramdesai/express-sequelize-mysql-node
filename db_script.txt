@@ -5,3 +5,17 @@ CREATE TABLE  `tutorials` (
     `createdAt` DATETIME NOT NULL, 
     `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)
 ) 
+
+CREATE TABLE  `courses` (`id` INTEGER NOT NULL auto_increment , 
+    `name` VARCHAR(255), 
+    `description` VARCHAR(255), 
+    `fees` INTEGER, 
+    `createdAt` DATETIME NOT NULL, 
+    `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)
+) 
+
+
+INSERT INTO courses(name,description,fees,createdAt,updatedAt) values
+('c','c',100,now(),now()),
+('c++','c++',200,now(),now()),
+('c#','c#',300,now(),now()),
